@@ -1,3 +1,4 @@
+# Authored by Donatus - https://github.com/Donatussss/imageapp
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_dt import FlaskDt, get_class_by_tablename
@@ -14,7 +15,7 @@ dt = FlaskDt(app, db, "display.html", "tables")
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
-app.config['SECRET_KEY'] = '6a82d28e4731ba013c5c037c'
+app.config['SECRET_KEY'] = '6a49u18e4731ba013c5c037c'
 
 bcrypt = Bcrypt(app)
 
