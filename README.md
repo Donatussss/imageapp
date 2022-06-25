@@ -10,5 +10,5 @@ To implement the above desired image storage we will make use of the python os l
 The os library will enable us obtain the root path of our module
 We can then feed this path to our custom url endpoint that makes use of the send_from_directory method when we want to serve our images
 
-*[send_from_directory documentation](https://flask.palletsprojects.com/en/2.1.x/api/)
-*[os module](https://www.geeksforgeeks.org/os-module-python-examples/)
+* [send_from_directory documentation](https://flask.palletsprojects.com/en/2.1.x/api/)
+* [os module](https://www.geeksforgeeks.org/os-module-python-examples/)
