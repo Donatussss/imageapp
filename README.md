@@ -14,6 +14,8 @@ We can then feed this path to our custom url endpoint that makes use of the send
 * [os module](https://www.geeksforgeeks.org/os-module-python-examples/)
 
 
+
+
 ## Trying out the app
 So, considering you want to try out the app on localhost you just have to clone it, install the requirements and run it
 This mini tutorial will use commands on the git bash terminal
