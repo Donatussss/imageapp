@@ -28,7 +28,7 @@ dt.display_table()
 @app.route('/login', methods=['POST', 'GET'])
 def login_page():
     column_list = ['user_name', 'password']
-    err_msg = None
+    err_msg = request.args.get('err_msg', None)
     
     column_list_dict = {"user_name": [[1, "users", "user_name"], True],                       
                         "password": [[2], False]}
@@ -63,7 +63,7 @@ def register_page():
         attempted_user = Users.query.filter_by(user_name=request.form[column_list[0]]).first()
 
         if attempted_user is not None:
-            err_msg = "User already exists"
+            err_msg = "Username already exists. Try logging in."
             drop_down_data = fetch_drop_down_data(column_list_dict)
 
             return redirect(url_for('login_page', err_msg=err_msg, column_list=column_list, column_list_dict=column_list_dict, drop_down_data=drop_down_data))
@@ -117,12 +117,15 @@ def upload():
     # we want to store the image in the img dir in the subdir of the current user
     target = os.path.join(APP_ROOT, f'img/{current_user.user_name}')
     filename = None
-    print(f'target: {target}')
+    # print(f'target: {target}')
 
     if not os.path.isdir(target):  # Check if image folder of current user exists
         os.mkdir(target)
 
-    # we allowed multiple files so we need to loop through them
+    # we allowed multiple files so we need to loop through them    
+    # print(f'The len: {len(request.files.getlist("file"))}')
+    if request.files.getlist("file")[0].filename == "":
+        return redirect(url_for('upload_page'))
 
     for file in request.files.getlist("file"):  # this returns a list of file names
         print(file)
@@ -137,7 +140,7 @@ def upload():
         # here we can change the file name to a variable of our liking
         # destination = "/".join([target, "temp.jpg"])
 
-        print(destination)
+        # print(destination)
         file.save(destination)  # save the file
         imageobj = db.session.query(Images).filter(Images.image_name==filename).first()
 
