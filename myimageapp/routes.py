@@ -115,6 +115,13 @@ def upload_page():
 @login_required
 def upload():
     # we want to store the image in the img dir in the subdir of the current user
+    # create img folder if it does not exist 
+    imgfolder = os.path.join(APP_ROOT, f'img/')
+    
+    if not os.path.isdir(imgfolder):  # Check if image folder of current user exists
+        os.mkdir(imgfolder)
+    
+    # we want to store the image in the img dir in the subdir of the current user
     target = os.path.join(APP_ROOT, f'img/{current_user.user_name}')
     filename = None
     # print(f'target: {target}')
@@ -123,7 +130,6 @@ def upload():
         os.mkdir(target)
 
     # we allowed multiple files so we need to loop through them    
-    # print(f'The len: {len(request.files.getlist("file"))}')
     if request.files.getlist("file")[0].filename == "":
         return redirect(url_for('upload_page'))
 
