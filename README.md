@@ -38,6 +38,11 @@ $ source venv/Scripts/activate
 (venv)
 $ pip install -r requirements.txt
 ```
+We need to initialize the db, i.e, create all the tables. There is a python file with this code already so we will just run it as a module
+```bash
+(venv)
+$ python -m myimageapp.esntls
+```
 
 Finally run the app as follows. Make sure the virtual environment is still activated.
 ```bash
