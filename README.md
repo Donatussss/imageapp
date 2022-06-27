@@ -1,4 +1,5 @@
-## This is a simple flask application to demonstrate image storage using the file system hand in hand with a database
+## Imageapp
+###### This is a simple flask application to demonstrate image storage using the file system hand in hand with a database
 
 Storing images directly in the database is a rather tricky approach as this will unnecessarily overload the database
 It would thus make sense to utilise the server's file system to store the actual images and the database to store the image names
@@ -12,8 +13,6 @@ We can then feed this path to our custom url endpoint that makes use of the send
 
 * [send_from_directory documentation](https://flask.palletsprojects.com/en/2.1.x/api/)
 * [os module](https://www.geeksforgeeks.org/os-module-python-examples/)
-
-
 
 
 ## Trying out the app
@@ -49,3 +48,16 @@ Finally run the app as follows. Make sure the virtual environment is still activ
 (venv)
 $ python run.py
 ```
+
+
+## Accessing the app
+Currently the configuration of the app makes the server externally visible to devices connected to the same local network
+If you wish to do this it is thus necessary to know the ip of the device you are running the app in
+This can be obtained as follows
+```bash
+$ ipconfig
+```
+Take note of the IPv4 address of the Wireless LAN adapter
+One can thus access the running app from another device on the same network using the following format
+http://ip:5000/
+e.g. http://172.20.10.1:5000/
