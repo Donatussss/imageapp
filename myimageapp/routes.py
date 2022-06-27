@@ -134,7 +134,7 @@ def upload():
         return redirect(url_for('upload_page'))
 
     for file in request.files.getlist("file"):  # this returns a list of file names
-        print(file)
+        # print(file)
         filename = file.filename  # we need to obtain the filename from the file object
 
         # we need to obtain the file extensions if we want to validate extension name
