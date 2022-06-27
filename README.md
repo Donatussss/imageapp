@@ -1,5 +1,5 @@
 ## Imageapp
-#### This is a simple flask application to demonstrate image storage using the file system hand in hand with a database
+### This is a simple flask application to demonstrate image storage using the file system hand in hand with a database
 
 Storing images directly in the database is a rather tricky approach as this will unnecessarily overload the database
 It would thus make sense to utilise the server's file system to store the actual images and the database to store the image names
